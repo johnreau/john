@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Funngro - India's premier teen freelancing platform connecting businesses with talented youth. Empower teen talent or start earning while learning.">
+    <title>Funngro - Empower Teen Talent for Your Business</title>
+    
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff3e9d;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #00c9a7;
+            --warning: #ffd166;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            position: relative;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--accent), #ff6b9d);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 62, 157, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 62, 157, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.05), rgba(37, 117, 252, 0.05));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            top: -150px;
+            right: -150px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero:after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #ff6b9d);
+            bottom: -100px;
+            left: -100px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #495057;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0);
+        }
+        
+        /* Card Styles */
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* How it Works Section */
+        .process-step {
+            position: relative;
+            padding: 2rem;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 1rem;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            color: rgba(106, 17, 203, 0.1);
+            line-height: 1;
+        }
+        
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            transform: translateX(-50px);
+        }
+        
+        .slide-in-right {
+            transform: translateX(50px);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .hero {
+                padding: 4rem 0 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Funngro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#why">Why Choose Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 my-2 my-lg-0">
+                        <a class="btn btn-secondary" href="Untitled-2.html">For Teens</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-primary" href="#cta">Post a Project</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title animate-on-scroll">Empower Teen Talent for Your Business</h1>
+                    <p class="hero-subtitle animate-on-scroll">Hire top teenage freelancers trained & verified by Funngro. Access a new generation of digital natives ready to bring fresh perspectives to your projects.</p>
+                    <div class="d-flex gap-3 animate-on-scroll">
+                        <a href="#cta" class="btn btn-primary btn-lg">Post a Project</a>
+                        <a href="#how" class="btn btn-outline-primary btn-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <img src="1.jpg" alt="Teen freelancers collaborating" class="hero-image animate-on-scroll">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Funngro -->
+    <section class="py-6 bg-light" id="why">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3 animate-on-scroll">Why Choose Funngro</h2>
+                <p class="lead text-muted mx-auto animate-on-scroll" style="max-width: 700px;">Discover the advantages of working with India's most promising young talent</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card p-4 animate-on-scroll">
+                        <div class="card-icon">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                        <h3 class="card-title">Cost-Effective</h3>
+                        <p>Access talented young professionals at competitive rates. Save on operational costs while getting quality work done.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 animate-on-scroll">
+                        <div class="card-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3 class="card-title">Verified Teens</h3>
+                        <p>All teens go through our verification and screening process. We ensure skill validation and reliability.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 animate-on-scroll">
+                        <div class="card-icon">
+                            <i class="bi bi-lightning"></i>
+                        </div>
+                        <h3 class="card-title">Fast Delivery</h3>
+                        <p>Get projects completed quickly with our tech-savvy generation who understand digital workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-6" id="how">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3 animate-on-scroll">How It Works</h2>
+                <p class="lead text-muted mx-auto animate-on-scroll" style="max-width: 700px;">Simple steps to access talented teen freelancers</p>
+            </div>
+            
+            <div class="row g-4 position-relative">
+                <div class="col-md-4">
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">1</div>
+                        <h3>Post Your Project</h3>
+                        <p>Describe your project requirements, timeline, and budget. It takes less than 5 minutes!</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">2</div>
+                        <h3>Match with Talent</h3>
+                        <p>Our algorithm matches you with the most suitable teen freelancers based on your needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">3</div>
+                        <h3>Collaborate & Grow</h3>
+                        <p>Work directly with the teen, provide feedback, and watch your project come to life!</p>
+                    </div>
+                </div>
+                
+                <!-- Connecting line -->
+                <div class="position-absolute top-50 start-0 end-0 d-none d-md-block">
+                    <div class="progress" style="height: 4px;">
+                        <div class="progress-bar" role="progressbar" style="width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary));" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-6 bg-light" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3 animate-on-scroll">Client Testimonials</h2>
+                <p class="lead text-muted mx-auto animate-on-scroll" style="max-width: 700px;">What businesses say about working with Funngro teens</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="testimonial-card">
+                        <p class="mb-4">"The teenage designers we hired through Funngro brought such fresh perspectives to our branding project. Their digital fluency and creative ideas exceeded our expectations!"</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="Client" class="client-img me-3">
+                            <div>
+                                <h5 class="mb-0">Priya Sharma</h5>
+                                <p class="text-muted mb-0">Marketing Director, TechStart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="testimonial-card">
+                        <p class="mb-4">"We needed social media content created quickly for a campaign. The teens from Funngro understood our audience perfectly and delivered engaging content ahead of schedule."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="Client" class="client-img me-3">
+                            <div>
+                                <h5 class="mb-0">Rajiv Mehta</h5>
+                                <p class="text-muted mb-0">CEO, SocialBuzz Agency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="testimonial-card">
+                        <p class="mb-4">"As a startup, budget is always tight. Funngro allowed us to get quality app development work done at a fraction of the cost we were quoted by professional agencies."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="Client" class="client-img me-3">
+                            <div>
+                                <h5 class="mb-0">Arjun Patel</h5>
+                                <p class="text-muted mb-0">Founder, AppVenture</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4 animate-on-scroll">
+                    <div class="testimonial-card">
+                        <p class="mb-4">"The enthusiasm and fresh ideas these young freelancers bring is infectious. We've made Funngro teens a regular part of our content creation workflow."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="Client" class="client-img me-3">
+                            <div>
+                                <h5 class="mb-0">Neha Gupta</h5>
+                                <p class="text-muted mb-0">Content Manager, EduLearn</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-6" id="cta">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center animate-on-scroll">
+                    <h2 class="display-4 fw-bold mb-4">Ready to Empower Teen Talent?</h2>
+                    <p class="lead mb-5">Join thousands of businesses who are already benefiting from the creativity, tech-savviness, and fresh perspectives of India's talented teens.</p>
+                    <a href="#" class="btn btn-primary btn-lg px-5 py-3">Post a Project Now</a>
+                    <p class="mt-3 text-muted">No upfront costs. Pay only when you're satisfied with the work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3 class="footer-title">Funngro</h3>
+                    <p>India's premier teen freelancing platform connecting ambitious youth with businesses looking for fresh talent.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2">
+                    <h5 class="mb-4">For Businesses</h5>
+                    <a href="#" class="footer-link">How It Works</a>
+                    <a href="#" class="footer-link">Browse Teens</a>
+                    <a href="#" class="footer-link">Success Stories</a>
+                    <a href="#" class="footer-link">Pricing</a>
+                </div>
+                
+                <div class="col-md-2">
+                    <h5 class="mb-4">For Teens</h5>
+                    <a href="teen.html" class="footer-link">Join as Teenlancer</a>
+                    <a href="#" class="footer-link">Find Projects</a>
+                    <a href="#" class="footer-link">Skill Development</a>
+                    <a href="#" class="footer-link">Success Stories</a>
+                </div>
+                
+                <div class="col-md-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i> Mumbai, India</p>
+                    <p><i class="bi bi-envelope me-2"></i> hello@funngro.com</p>
+                    <p><i class="bi bi-phone me-2"></i> +91 98765 43210</p>
+                </div>
+            </div>
+            
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="text-center py-3">
+                <p class="mb-0">&copy; 2023 Funngro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // Initialize GSAP and ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Simple scroll animation for elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate on scroll elements
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            animateElements.forEach(el => {
+                gsap.fromTo(el, 
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+            
+            // Hero text animation
+            gsap.from('.hero-title', { duration: 1, y: -30, opacity: 0, ease: 'power3.out' });
+            gsap.from('.hero-subtitle', { duration: 1, y: -20, opacity: 0, delay: 0.3, ease: 'power3.out' });
+            gsap.from('.hero-image', { duration: 1, x: 30, opacity: 0, delay: 0.5, ease: 'power3.out' });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '0.5rem 1rem';
+                    navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.padding = '1rem 2rem';
+                    navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
